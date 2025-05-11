@@ -8,7 +8,7 @@ namespace Ex3
 {
     internal class Faturamento
     {
-        public DateTime Data { get; set; }
-        public double Valor { get; set; }
+        public int dia { get; set; }
+        public double valor { get; set; }
     }
 }
