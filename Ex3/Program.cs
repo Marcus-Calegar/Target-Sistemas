@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -20,7 +20,6 @@ namespace Ex3
              */
             
             string caminhoArquivo = @"..\..\exemplosJson.json";
-            // Pedi para gerar o arquivo Json, para que pudesse testar valores.
             string arquivoJson = File.ReadAllText(caminhoArquivo);
 
             Faturamento[] dadosBrutos = JsonSerializer.Deserialize<Faturamento[]>(arquivoJson);
@@ -29,10 +28,10 @@ namespace Ex3
             double media = diasComFaturamento.Average(faturamento => faturamento.valor);
             double maior = diasComFaturamento.Max(faturamento => faturamento.valor);
             double menor = diasComFaturamento.Min(faturamento => faturamento.valor);
-            int qtdeDiasAcimaMedia = diasComFaturamento.Count(faturamento => faturamento.valor > media);
+            double qtdeDiasAcimaMedia = diasComFaturamento.Count(dias => dias.valor > media);
 
-            Console.WriteLine($"Menor faturamento do mês: {menor.ToString("C")}");
-            Console.WriteLine($"Maior faturamento do mês: {maior.ToString("C")}");
+            Console.WriteLine($"Menor faturamento do mês: {menor:C}");
+            Console.WriteLine($"Maior faturamento do mês: {maior:C}");
             Console.WriteLine($"Número de dias com faturamento acima da média: {qtdeDiasAcimaMedia}");
         }
     }
