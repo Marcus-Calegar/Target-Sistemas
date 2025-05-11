@@ -24,12 +24,12 @@ namespace Ex3
             string arquivoJson = File.ReadAllText(caminhoArquivo);
 
             Faturamento[] dadosBrutos = JsonSerializer.Deserialize<Faturamento[]>(arquivoJson);
-            var diasComFaturamento = dadosBrutos.Where(dado => dado.Valor > 0).ToArray();
+            var diasComFaturamento = dadosBrutos.Where(dado => dado.valor > 0).ToArray();
 
-            double media = diasComFaturamento.Average(faturamento => faturamento.Valor);
-            double maior = diasComFaturamento.Max(faturamento => faturamento.Valor);
-            double menor = diasComFaturamento.Min(faturamento => faturamento.Valor);
-            double qtdeDiasAcimaMedia = diasComFaturamento.Count(dias => dias.Valor > 0);
+            double media = diasComFaturamento.Average(faturamento => faturamento.valor);
+            double maior = diasComFaturamento.Max(faturamento => faturamento.valor);
+            double menor = diasComFaturamento.Min(faturamento => faturamento.valor);
+            int qtdeDiasAcimaMedia = diasComFaturamento.Count(faturamento => faturamento.valor > media);
 
             Console.WriteLine($"Menor faturamento do mês: {menor.ToString("C")}");
             Console.WriteLine($"Maior faturamento do mês: {maior.ToString("C")}");
